@@ -1,0 +1,91 @@
+@font-face{
+	font-family: "Botones";
+    src: url("../fuentes/Cinzel-Regular.ttf");
+} 
+
+@font-face{
+	font-family: "Titulo";
+    src: url("../fuentes/PressStart2P-Regular.ttf");
+}
+
+/**Fondo**/
+
+
+
+/**Centrado de los elementos **/
+.title {
+  text-align: center;
+}
+
+.money {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.zona_juego {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.izq, .der {
+  width: 20%;
+  height: 400px;
+  border: 2px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centro{
+  display: flex;
+  justify-content: center;
+  width: 60%;
+}
+
+
+/**Titulo**/
+.title {
+  font-family: "Titulo";
+  font-size: 3em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+/**Dinero**/
+.money {
+  font-family: "Titulo";
+  font-size: 2em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/**Boton Central**/
+.coin-btn {
+  background: none;
+  border: 2px solid #333;
+  width: fit-content;
+  text-align: center;
+  cursor: pointer;
+  line-height: 0; /* evita que el <pre> añada espacio extra alrededor */
+  display: block;      /* para que margin:auto funcione */
+  margin: 0 auto;       /* centra el botón entero en la página */
+  border-radius: 20px;
+  padding: 0 200px; /* 0 arriba/abajo, 60px izquierda-derecha */
+}
+
+
+.ascii-coin {
+  font-family: "Courier New", Consolas, monospace; /* monoespaciada, imprescindible */
+  white-space: pre;      /* respeta espacios y saltos de línea tal cual */
+  line-height: 1;         /* que las líneas no se separen de más */
+  letter-spacing: 0;
+  transform-origin: top left;
+  margin: 0;
+  /*color: gold;*/
+  user-select: none;      /* que no se pueda seleccionar el texto al hacer clic */
+  text-align: left;
+}
