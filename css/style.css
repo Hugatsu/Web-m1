@@ -9,7 +9,9 @@
 }
 
 /**Fondo**/
-
+.body{
+  background-color: #87CEEB;
+}
 
 
 /**Centrado de los elementos **/
@@ -17,7 +19,7 @@
   text-align: center;
 }
 
-.money {
+.moneyText, .moneyNumber {
   text-align: center;
   font-size: 2em;
   margin-bottom: 20px;
@@ -30,14 +32,33 @@
   gap: 40px;
 }
 
-.izq, .der {
+.izq{
   width: 20%;
-  height: 400px;
+  height: 670px;
   border: 2px solid #333;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
+  justify-items: center;
+  border-radius: 20px;
+  grid-template-rows: repeat(3, 1fr);
 }
+
+.fabrics, .bank, .autoClick{
+  width: 100%;
+  text-align: center;
+}
+
+.autoClick, .fabrics, .bank{
+  padding-bottom: 15px;  
+  width: 250px;
+  font-family: "Titulo";
+}
+
+.autoClick, .fabrics{
+  border-bottom: 2px solid #333;
+}
+
 
 .centro{
   display: flex;
@@ -45,6 +66,43 @@
   width: 60%;
 }
 
+.der {
+  width: 20%;
+  height: 670px;
+  border: 2px solid #333;
+  display: grid;  
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  border-radius: 20px;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.autoClic, .addFactory, .addBank, .duplicarClics, .duplicarTrabajo, .nightMode{
+  font-family: "Botones";
+  font-size: 25px;
+  width: 250px;
+  text-align: center;
+  background-color: #041A40;
+  color:white;
+  border-radius: 20px;
+}
+
+.autoClic:active,
+.addFactory:active,
+.addBank:active,
+.duplicarClics:active,
+.duplicarTrabajo:active,
+.nightMode:active {
+  transform: scale(0.9);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cooldownClics, .cooldownTrabajo{
+  font-family: "Titulo";
+  font-size: 25px;
+  text-align: center;
+}
 
 /**Titulo**/
 .title {
@@ -56,7 +114,7 @@
 
 
 /**Dinero**/
-.money {
+.moneyText, .moneyNumber {
   font-family: "Titulo";
   font-size: 2em;
   margin-top: 20px;
@@ -77,6 +135,10 @@
   padding: 0 200px; /* 0 arriba/abajo, 60px izquierda-derecha */
 }
 
+.coin-btn:active{
+  transform: scale(0.9);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
 
 .ascii-coin {
   font-family: "Courier New", Consolas, monospace; /* monoespaciada, imprescindible */
