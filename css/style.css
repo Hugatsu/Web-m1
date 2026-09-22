@@ -44,18 +44,18 @@
   grid-template-rows: repeat(3, 1fr);
 }
 
-.fabrics, .bank, .autoClick{
+.factory, .bank, .autoClick{
   width: 100%;
   text-align: center;
 }
 
-.autoClick, .fabrics, .bank{
-  padding-bottom: 15px;  
+.autoClick, .factory, .bank{
+  padding-bottom: 15px;
   width: 250px;
   font-family: "Titulo";
 }
 
-.autoClick, .fabrics{
+.autoClick, .factory{
   border-bottom: 2px solid #333;
 }
 
@@ -98,10 +98,28 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.cost-row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.autoClicCost, .factoryCost, .bankCost, .euro{
+  font-family: "Titulo";
+  margin: 0;
+}
+
 .cooldownClics, .cooldownTrabajo{
   font-family: "Titulo";
   font-size: 25px;
   text-align: center;
+}
+
+.duplicate{
+  padding-top: 10px;
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
 }
 
 /**Titulo**/
