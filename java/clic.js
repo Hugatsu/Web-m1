@@ -44,7 +44,7 @@ function addMoney(cantidad) {
 }
 
 function ingresos() {
-    const ingreso = (autoclickCounter * 1) + (factoryCounter * 1) + (bankCounter * 2);
+    const ingreso = (autoclickCounter * 1) + (factoryCounter * 3) + (bankCounter * 5);
     addMoney(ingreso);
 }
 

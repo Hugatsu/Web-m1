@@ -146,11 +146,11 @@
   width: fit-content;
   text-align: center;
   cursor: pointer;
-  line-height: 0; /* evita que el <pre> añada espacio extra alrededor */
-  display: block;      /* para que margin:auto funcione */
-  margin: 0 auto;       /* centra el botón entero en la página */
+  line-height: 0; 
+  display: block;      
+  margin: 0 auto;       
   border-radius: 20px;
-  padding: 0 200px; /* 0 arriba/abajo, 60px izquierda-derecha */
+  padding: 0 200px;
 }
 
 .coin-btn:active{
@@ -159,13 +159,13 @@
 }
 
 .ascii-coin {
-  font-family: "Courier New", Consolas, monospace; /* monoespaciada, imprescindible */
-  white-space: pre;      /* respeta espacios y saltos de línea tal cual */
-  line-height: 1;         /* que las líneas no se separen de más */
+  font-family: "Courier New", Consolas, monospace; 
+  white-space: pre;      
+  line-height: 1;         
   letter-spacing: 0;
   transform-origin: top left;
   margin: 0;
   /*color: gold;*/
-  user-select: none;      /* que no se pueda seleccionar el texto al hacer clic */
+  user-select: none;      
   text-align: left;
 }
