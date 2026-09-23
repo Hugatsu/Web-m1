@@ -53,11 +53,15 @@
   padding-bottom: 15px;
   width: 250px;
   font-family: "Titulo";
+
+
 }
 
 .autoClick, .factory{
   border-bottom: 2px solid #333;
 }
+
+
 
 
 .centro{
@@ -122,7 +126,20 @@
   border-bottom: 2px solid #333;
 }
 
-/**Titulo**/
+.autoclickSection,
+.autoClick,
+.factory,
+.bank,
+.factorySection,
+.bankSection,
+.duplicate,
+.nightMode{
+  visibility: hidden;
+}
+
+
+
+/**Título**/
 .title {
   font-family: "Titulo";
   font-size: 3em;
@@ -139,7 +156,7 @@
   margin-bottom: 20px;
 }
 
-/**Boton Central**/
+/**Botón Central**/
 .coin-btn {
   background: none;
   border: 2px solid #333;

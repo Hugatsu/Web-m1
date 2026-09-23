@@ -7,24 +7,24 @@
     <script src="java/clic.js" defer></script>
   </head>
   <body class="body">
-    <h1 id="title" class="title">Money Clicker</h1>
+    <h1 id="title" class="title">Coin Clicker</h1>
     <h1 id="moneyText" class="moneyText">Dinero: </h1><h1 id="moneyNumber" class="moneyNumber">0</h1>
     <br>
 
     <div class="zona_juego">
     
         <div class="izq">
-            <div class="autoClick">
+            <div id="autoClick" class="autoClick">
                 <h1 id="autoClick-title" class="autoClick-title">Auto Click</h1>
                 <h1 id="autoClick-number" class="autoClick-number">0</h1>
             </div>
 
-            <div class="factory">
+            <div id="factory" class="factory">
                 <h1 id="factory-title" class="factory-title">Fábricas</h1>
                 <h1 id="factory-number" class="factory-number">0</h1>
             </div>
 
-            <div class="bank">
+            <div id="bank" class="bank">
                 <h1 id="bank-title" class="bank-title">Banco</h1>
                 <h1 id="bank-number" class="bank-number">0</h1>
             </div>
@@ -86,23 +86,29 @@
         </div>
 
         <div class="der">
-            <button id="autoClic" class="autoClic"> Clic Automatico</button>
-            <div class="cost-row"><p id="autoClicCost" class="autoClicCost">100</p><p class="euro">🪙</p></div>
-            <button id="addFactory" class="addFactory"> Añadir Fabrica</button>
-            <div class="cost-row"><p id="factoryCost" class="factoryCost">1000</p><p class="euro">🪙</p></div>
-            <button id="addBank" class="addBank"> Añadir Banco</button>
-            <div class="cost-row"><p id="bankCost" class="bankCost">5000</p><p class="euro">🪙</p></div>
-
-            <div class="duplicate">
+            <div id="autoclickSection" class ="autoclickSection">
+                <button id="autoClic" class="autoClic"> Clic Automático</button>
+                <div class="cost-row"><p id="autoClicCost" class="autoClicCost">100</p><p class="euro">🪙</p></div>
+            </div>
+            <div id="factorySection" class="factorySection">
+                <button id="addFactory" class="addFactory"> Añadir Fábrica</button>
+                <div class="cost-row"><p id="factoryCost" class="factoryCost">1000</p><p class="euro">🪙</p></div>
+            </div>
+            <div id="bankSection" class="bankSection">
+                <button id="addBank" class="addBank"> Añadir Banco</button>
+                <div class="cost-row"><p id="bankCost" class="bankCost">5000</p><p class="euro">🪙</p></div>
+            </div>
+            
+            <div id="duplicate" class="duplicate">
                 <button id= "duplicarClics" class="duplicarClics">
                     👆 Duplicar Clics
                 </button>
-                <p class="cooldownClics">0</p>
+                <p id="cooldownClics" class="cooldownClics">0</p>
 
                 <button id= "duplicarTrabajo" class="duplicarTrabajo">
                     🏭 Duplicar Zona Trabajo 🏭
                 </button>
-                <p class="cooldownTrabajo">0</p>
+                <p id="cooldownTrabajo" class="cooldownTrabajo">0</p>
             </div>
             <button id="nightMode" class="nightMode"> Modo Noche</button>
         </div>
