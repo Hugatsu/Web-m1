@@ -30,6 +30,7 @@ const bankSection = document.querySelector("#bankSection");
 const duplicate = document.querySelector("#duplicate");
 const nightModeDiv = document.querySelector("#nightModeDiv");
 const nightCost = document.querySelector("#nightCost");
+const incomeText = document.querySelector("#incomeText");
 const addClickerIncrease = 1.1;
 const addFactoryIncrease = 1.2;
 const addBankIncrease = 1.3;
@@ -93,6 +94,7 @@ function addMoney(cantidad) {
 function ingresos() {
     const ingreso = (autoclickCounter * 1 * clickMultiplier) + (factoryCounter * 10 * buildingMultiplier) + (bankCounter * 50 * buildingMultiplier);
     addMoney(ingreso);
+    incomeText.textContent = `+${ingreso} 🪙/s`;
 }
 
 function buy(coste, button){
@@ -102,6 +104,8 @@ function buy(coste, button){
     }
 
     money -= coste;
+
+    incomeText.style.visibility = "visible";
 
     if (button === addFactoryButton) {
         factoryCounter++;

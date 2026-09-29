@@ -19,10 +19,15 @@
   text-align: center;
 }
 
+.incomeText{
+  text-align: center;
+  font-family: "Titulo";
+  font-size: 0.9em;
+  margin: 0;
+}
+
 .moneyText, .moneyNumber {
   text-align: center;
-  font-size: 2em;
-  margin-bottom: 20px;
 }
 
 .zona_juego {
@@ -133,7 +138,8 @@
 .factorySection,
 .bankSection,
 .duplicate,
-.nightModeDiv{
+.nightModeDiv,
+.incomeText{
   visibility: hidden;
 }
 
@@ -142,18 +148,18 @@
 /**Título**/
 .title {
   font-family: "Titulo";
-  font-size: 3em;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  font-size: 2em;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 
 /**Dinero**/
 .moneyText, .moneyNumber {
   font-family: "Titulo";
-  font-size: 2em;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  font-size: 1.3em;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /**Botón Central**/
