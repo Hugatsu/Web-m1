@@ -53,6 +53,11 @@ addBankButton.addEventListener("click", () => buy(bankCost.textContent, addBankB
 duplicarClicsButton.addEventListener("click", duplicateClicks);
 duplicarTrabajoButton.addEventListener("click", duplicateBuildings);
 nightModeButton.addEventListener("click", () => buy(nightCost.textContent, nightModeButton));
+document.addEventListener("keydown", (event) => {
+    if(event.key.toLocaleLowerCase() === "n" && nightModeBought){
+        document.body.classList.toggle("night");
+    }
+});
 
 setInterval(ingresos, 1000);
 
@@ -80,7 +85,7 @@ function addMoney(cantidad) {
         duplicate.style.visibility = "visible";
     }
 
-    if(money >= 10000 && !nightModeBought){
+    if(money >= 10 && !nightModeBought){
         nightModeDiv.style.visibility = "visible";
     }
 }

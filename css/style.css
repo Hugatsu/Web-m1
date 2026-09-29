@@ -182,7 +182,42 @@
   letter-spacing: 0;
   transform-origin: top left;
   margin: 0;
-  /*color: gold;*/
   user-select: none;      
   text-align: left;
+}
+
+
+
+
+
+/*Modo Noche*/
+
+.night{
+  background-color: #041A40;
+  color: #e0e0e0
+}
+
+
+.night .izq,
+.night .der,
+.night .coin-btn,
+.night .autoClick,
+.night .factory,
+.night .duplicate {
+  border-color: #E0E0E0;
+}
+
+
+.night .autoClic,
+.night .addFactory,
+.night .addBank,
+.night .duplicarClics,
+.night .duplicarTrabajo,
+.night .nightMode {
+  background-color: #F2C94C;
+  color: #0B1A2E;
+}
+
+.night .ascii-coin {
+  color: gold;
 }
