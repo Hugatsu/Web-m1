@@ -11,6 +11,7 @@ let clickMultiplier = 1;
 let buildingMultiplier = 1;
 let restanteClics = 0;
 let restanteBuilding = 0;
+let nightModeBought = false;
 const moneyNumber = document.querySelector("#moneyNumber");
 const autoClicCost = document.querySelector("#autoClicCost");
 const factoryCost = document.querySelector("#factoryCost");
@@ -27,6 +28,8 @@ const factorySection = document.querySelector("#factorySection");
 const bank = document.querySelector("#bank");
 const bankSection = document.querySelector("#bankSection");
 const duplicate = document.querySelector("#duplicate");
+const nightModeDiv = document.querySelector("#nightModeDiv");
+const nightCost = document.querySelector("#nightCost");
 const addClickerIncrease = 1.1;
 const addFactoryIncrease = 1.2;
 const addBankIncrease = 1.3;
@@ -49,6 +52,7 @@ addFactoryButton.addEventListener("click",  () => buy(factoryCost.textContent, a
 addBankButton.addEventListener("click", () => buy(bankCost.textContent, addBankButton));
 duplicarClicsButton.addEventListener("click", duplicateClicks);
 duplicarTrabajoButton.addEventListener("click", duplicateBuildings);
+nightModeButton.addEventListener("click", () => buy(nightCost.textContent, nightModeButton));
 
 setInterval(ingresos, 1000);
 
@@ -57,32 +61,32 @@ function addMoney(cantidad) {
     money += cantidad;
     moneyNumber.textContent = money;
 
-    if(money >= 1){
+    if(money >= 100){
         autoClick.style.visibility = "visible";
         autoClickSection.style.visibility = "visible";
     }
 
-    if(money >= 5){
+    if(money >= 500){
         factory.style.visibility = "visible";
         factorySection.style.visibility = "visible";
     }
 
-    if(money >= 40){
+    if(money >= 4000){
         bank.style.visibility = "visible";
         bankSection.style.visibility = "visible";
     }
 
-    if(money >= 15){
+    if(money >= 1500){
         duplicate.style.visibility = "visible";
     }
 
-    if(money >= 100){
-        nightModeButton.style.visibility = "visible";
+    if(money >= 10000 && !nightModeBought){
+        nightModeDiv.style.visibility = "visible";
     }
 }
 
 function ingresos() {
-    const ingreso = (autoclickCounter * 1 * clickMultiplier) + (factoryCounter * 3 * buildingMultiplier) + (bankCounter * 5 * buildingMultiplier);
+    const ingreso = (autoclickCounter * 1 * clickMultiplier) + (factoryCounter * 10 * buildingMultiplier) + (bankCounter * 50 * buildingMultiplier);
     addMoney(ingreso);
 }
 
@@ -106,6 +110,8 @@ function buy(coste, button){
         autoclickCounter++;
         autoClicCost.textContent = round(coste * addClickerIncrease);
         autoClickNumber.textContent = autoclickCounter;
+    } else if (button === nightModeButton) {
+        activateNightMode();
     }
 
     moneyNumber.textContent = money;
@@ -167,4 +173,11 @@ function duplicateBuildings(){
             duplicarTrabajoButton.disabled = false;
         }
     }, 1000);
+}
+
+function activateNightMode(){
+    nightModeBought = true;
+    nightModeButton.disabled = true;
+    alert("A partir de ahora puedes usar la tecla N para activar el modo noche");
+    nightModeDiv.style.visibility = "hidden";
 }

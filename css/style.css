@@ -109,7 +109,7 @@
   gap: 5px;
 }
 
-.autoClicCost, .factoryCost, .bankCost, .euro{
+.autoClicCost, .factoryCost, .bankCost, .nightCost, .euro{
   font-family: "Titulo";
   margin: 0;
 }
@@ -133,7 +133,7 @@
 .factorySection,
 .bankSection,
 .duplicate,
-.nightMode{
+.nightModeDiv{
   visibility: hidden;
 }
 
