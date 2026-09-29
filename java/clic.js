@@ -85,7 +85,7 @@ function addMoney(cantidad) {
         duplicate.style.visibility = "visible";
     }
 
-    if(money >= 10 && !nightModeBought){
+    if(money >= 10000 && !nightModeBought){
         nightModeDiv.style.visibility = "visible";
     }
 }
