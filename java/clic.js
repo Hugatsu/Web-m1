@@ -34,6 +34,10 @@ const incomeText = document.querySelector("#incomeText");
 const addClickerIncrease = 1.1;
 const addFactoryIncrease = 1.2;
 const addBankIncrease = 1.3;
+let autoClickPrice = Number(autoClicCost.textContent);
+let factoryPrice = Number(factoryCost.textContent);
+let bankPrice = Number(bankCost.textContent);
+let nightModePrice = Number(nightCost.textContent);
 
 
 /*Botones*/
@@ -48,12 +52,12 @@ const nightModeButton = document.querySelector("#nightMode");
 
 /*addEventListener*/
 coinButton.addEventListener("click", () => addMoney(1 * clickMultiplier));
-autoClickButton.addEventListener("click", () => buy(autoClicCost.textContent, autoClickButton));
-addFactoryButton.addEventListener("click",  () => buy(factoryCost.textContent, addFactoryButton));
-addBankButton.addEventListener("click", () => buy(bankCost.textContent, addBankButton));
-duplicarClicsButton.addEventListener("click", duplicateClicks);
-duplicarTrabajoButton.addEventListener("click", duplicateBuildings);
-nightModeButton.addEventListener("click", () => buy(nightCost.textContent, nightModeButton));
+autoClickButton.addEventListener("click", () => buy(autoClickButton));
+addFactoryButton.addEventListener("click",  () => buy(addFactoryButton));
+addBankButton.addEventListener("click", () => buy(addBankButton));
+duplicarClicsButton.addEventListener("click", () => duplicar(duplicarClicsButton));
+duplicarTrabajoButton.addEventListener("click", () => duplicar(duplicarTrabajoButton));
+nightModeButton.addEventListener("click", () => buy(nightModeButton));
 document.addEventListener("keydown", (event) => {
     if(event.key.toLocaleLowerCase() === "n" && nightModeBought){
         document.body.classList.toggle("night");
@@ -97,32 +101,35 @@ function ingresos() {
     incomeText.textContent = `+${ingreso} 🪙/s`;
 }
 
-function buy(coste, button){
-    coste = Number(coste);
-    if(money < coste){
-        return;
-    }
-
-    money -= coste;
-
-    incomeText.style.visibility = "visible";
-
-    if (button === addFactoryButton) {
+function buy(button){
+    if (button === autoClickButton) {
+        if (money < autoClickPrice) return;
+        money -= autoClickPrice;
+        autoclickCounter++;
+        autoClickPrice = round(autoClickPrice * addClickerIncrease);
+        autoClicCost.textContent = autoClickPrice;
+        autoClickNumber.textContent = autoclickCounter;
+    } else if (button === addFactoryButton) {
+        if (money < factoryPrice) return;
+        money -= factoryPrice;
         factoryCounter++;
-        factoryCost.textContent = round(coste * addFactoryIncrease);
+        factoryPrice = round(factoryPrice * addFactoryIncrease);
+        factoryCost.textContent = factoryPrice;
         factoryNumber.textContent = factoryCounter;
     } else if (button === addBankButton) {
+        if (money < bankPrice) return;
+        money -= bankPrice;
         bankCounter++;
-        bankCost.textContent = round(coste * addBankIncrease);
+        bankPrice = round(bankPrice * addBankIncrease);
+        bankCost.textContent = bankPrice;
         bankNumber.textContent = bankCounter;
-    } else if (button === autoClickButton) {
-        autoclickCounter++;
-        autoClicCost.textContent = round(coste * addClickerIncrease);
-        autoClickNumber.textContent = autoclickCounter;
     } else if (button === nightModeButton) {
+        if (money < nightModePrice) return;
+        money -= nightModePrice;
         activateNightMode();
     }
 
+    incomeText.style.visibility = "visible";
     moneyNumber.textContent = money;
 }
 
@@ -135,53 +142,56 @@ function round(coste){
     // positivos, funciona igual que "redondear para arriba" Math.ceil.
 }
 
-function duplicateClicks(){
-    if(duplicarClicsText.textContent != 0){
-        return;
-    }
 
-    // Activa el x2 durante duplicateClicksTime segundos
-    clickMultiplier = 2;
-    duplicarClicsButton.disabled = true;
-    setTimeout(() => {
-        clickMultiplier = 1;
-    }, duplicateClicksTime * 1500);
+function duplicar(button){
 
-    // Cuenta atrás del cooldown, cuando llega a 0 se puede volver a usar
-    restanteClics = duplicateClicksCooldown;
-    duplicarClicsText.textContent = restanteClics;
-    const intervaloClics = setInterval(() => {
-        restanteClics--;
+    if(button === duplicarClicsButton){
+        if(restanteClics > 0){
+            return;
+        }
+
+        // Activa el x2 durante duplicateClicksTime segundos
+        clickMultiplier = 2;
+        duplicarClicsButton.disabled = true;
+        setTimeout(() => {
+            clickMultiplier = 1;
+        }, duplicateClicksTime * 1500);
+
+        // Cuenta atrás del cooldown, cuando llega a 0 se puede volver a usar
+        restanteClics = duplicateClicksCooldown;
         duplicarClicsText.textContent = restanteClics;
-        if(restanteClics <= 0){
-            clearInterval(intervaloClics);
-            duplicarClicsButton.disabled = false;
+        const intervaloClics = setInterval(() => {
+            restanteClics--;
+            duplicarClicsText.textContent = restanteClics;
+            if(restanteClics <= 0){
+                clearInterval(intervaloClics);
+                duplicarClicsButton.disabled = false;
+            }
+        }, 1000);
+    }else if(button === duplicarTrabajoButton){
+        if(restanteBuilding > 0){
+            return;
         }
-    }, 1000);
-}
 
+        buildingMultiplier = 2;
+        duplicarTrabajoButton.disabled = true;
 
-function duplicateBuildings(){
-    if(duplicarEdificiosText.textContent != 0){
-        return;
+        setTimeout(() =>{buildingMultiplier = 1; }, duplicateBuildingsTime * 1000);
+
+        restanteBuilding = duplicateBuildingsCooldown;
+        duplicarEdificiosText.textContent = restanteBuilding;
+
+        const intervaloEdificios = setInterval(() => {
+            restanteBuilding--;
+            duplicarEdificiosText.textContent = restanteBuilding;
+            if(restanteBuilding <= 0){
+                clearInterval(intervaloEdificios);
+                duplicarTrabajoButton.disabled = false;
+            }
+        }, 1000);
     }
 
-    buildingMultiplier = 2;
-    duplicarTrabajoButton.disabled = true;
 
-    setTimeout(() =>{buildingMultiplier = 1; }, duplicateBuildingsTime * 1000);
-
-    restanteBuilding = duplicateBuildingsCooldown;
-    duplicarEdificiosText.textContent = restanteBuilding;
-
-    const intervaloEdificios = setInterval(() => {
-        restanteBuilding--;
-        duplicarEdificiosText.textContent = restanteBuilding;
-        if(restanteBuilding <= 0){
-            clearInterval(intervaloEdificios);
-            duplicarTrabajoButton.disabled = false;
-        }
-    }, 1000);
 }
 
 function activateNightMode(){
