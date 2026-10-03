@@ -38,6 +38,8 @@ let autoClickPrice = Number(autoClicCost.textContent);
 let factoryPrice = Number(factoryCost.textContent);
 let bankPrice = Number(bankCost.textContent);
 let nightModePrice = Number(nightCost.textContent);
+const coinSound = new Audio("media/sounds/coin.mp3");
+const buySound = new Audio("media/sounds/cash.mp3");
 
 
 /*Botones*/
@@ -51,7 +53,11 @@ const nightModeButton = document.querySelector("#nightMode");
 
 
 /*addEventListener*/
-coinButton.addEventListener("click", () => addMoney(1 * clickMultiplier));
+coinButton.addEventListener("click", () => {
+    addMoney(1 * clickMultiplier);
+    coinSound.currentTime = 0;
+    coinSound.play();
+});
 autoClickButton.addEventListener("click", () => buy(autoClickButton));
 addFactoryButton.addEventListener("click",  () => buy(addFactoryButton));
 addBankButton.addEventListener("click", () => buy(addBankButton));
@@ -131,17 +137,13 @@ function buy(button){
 
     incomeText.style.visibility = "visible";
     moneyNumber.textContent = money;
+    buySound.currentTime = 0;
+    buySound.play();
 }
 
 function round(coste){
-    const decimal = coste % 1;
-    return decimal === 0 ? coste : coste - decimal + 1;
-    // coste % 1 te da solo la parte decimal (ej. 2.4 % 1 = 0.4). Si no hay parte
-    // decimal, el número ya es entero. Si la hay, le quitas la parte decimal y
-    // sumas 1 para subir al siguiente entero. Como tus costes siempre son
-    // positivos, funciona igual que "redondear para arriba" Math.ceil.
+    return Math.ceil(Math.round(coste * 100) / 100);
 }
-
 
 function duplicar(button){
 
